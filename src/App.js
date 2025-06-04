@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import Dock from './Dock';
 import Particles from "./Particles";
 import TextPressure from './Pressure';
-import ScrollReveal from './ScrollReveal';
-import { FiHome, FiPackage, FiUser, FiSettings } from 'react-icons/fi';
 import InfoContent from './InfoContent';
 import TiltedCard from './Card';
 import Modal from './CardOut';
+
+import { FiHome, FiPackage, FiUser, FiSettings } from 'react-icons/fi';
 
 import Project1 from './images/Project1.png';
 import Project2 from './images/Project2.png';
@@ -25,7 +25,8 @@ function App() {
   const [textEffectOn, setTextEffectOn] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState({ title: '', content: '' });
-  const scrollContainerRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [loadingDots, setLoadingDots] = useState('');
 
   const items = [
     { icon: <FiHome size={18} />, label: 'Home', onClick: () => setCurrentPage('home') },
@@ -90,6 +91,7 @@ function App() {
     imageSrc: CardImages[i],
   }));
 
+  // Handle mouse movement to update mouse state for text effect
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 2;
@@ -97,8 +99,52 @@ function App() {
       setMouse({ x, y });
     };
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+
+    // Loading timer for 2.5 seconds
+    const timer = setTimeout(() => setLoading(false), 2500);
+
+    const dotsInterval = setInterval(() => {
+      setLoadingDots((prev) => (prev.length >= 3 ? '' : prev + '.'));
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(dotsInterval);
+    };
   }, []);
+
+  const loadingStyle = {
+    position: "fixed",
+    top: 0, left: 0,
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: "black",
+    color: "white",
+    fontSize: "2rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 9999,
+  };
+
+  if (loading) {
+  return (
+    <>
+      <style>{`
+        @font-face {
+          font-family: 'Compressa VF';
+          src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+        }
+      `}</style>
+      <div style={{
+        ...loadingStyle,
+        fontFamily: "'Compressa VF', sans-serif", // Apply your font here
+      }}>
+        Loading{loadingDots}
+      </div>
+    </>
+  );
+}
 
   const textStyle = {
     position: "absolute",
@@ -212,17 +258,16 @@ function App() {
                   setModalData({
                     title: name,
                     content: (
-                    <>
-                      <p>{desc || `This is a detailed description for ${name}.`}</p>
-                      <p><strong>Technologies:</strong></p>
-                      <ul style={{ listStylePosition: "inside", paddingLeft: 0, textAlign: "left", display: "inline-block", margin: "0 auto" }}>
-                        {(overlaydesc ? overlaydesc.split(',') : ["N/A"]).map((tech, i) => (
-                          <li key={i}>{tech.trim()}</li>
-                        ))}
-                      </ul>
-                    </>
-                  )
-
+                      <>
+                        <p>{desc || `This is a detailed description for ${name}.`}</p>
+                        <p><strong>Technologies:</strong></p>
+                        <ul style={{ listStylePosition: "inside", paddingLeft: 0, textAlign: "left", display: "inline-block", margin: "0 auto" }}>
+                          {(overlaydesc ? overlaydesc.split(',') : ["N/A"]).map((tech, i) => (
+                            <li key={i}>{tech.trim()}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )
                   });
                   setModalOpen(true);
                 }}
@@ -239,8 +284,6 @@ function App() {
             )}
           </div>
         )}
-
-
 
         {currentPage === 'settings' && (
           <>
@@ -283,10 +326,6 @@ function App() {
             </div>
           </>
         )}
-
-
-
-        
       </div>
     </div>
   );
