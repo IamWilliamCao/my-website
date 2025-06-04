@@ -17,6 +17,7 @@ import Project6 from './images/Project6.png';
 import Project7 from './images/Project7.png';
 import Project8 from './images/Project8.png';
 import Project9 from './images/Project9.png';
+import ProjectEmpty from './images/ProjectEmpty.png';
 
 function App() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -36,15 +37,27 @@ function App() {
   ];
 
   const projectNames = [
-    "Multi-Language OCR Translator",
-    "...",
-    "...",
+    "Language OCR Translator ⚙️",
+    "⚙️",
+    "⚙️",
+    "Berkeley AI Projects ✅",
+    "HackRPI 2024 Website ✅",
+    "Call A Ride Platform ✅",
+    "Youtube Comment System ✅",
+    "HTML Search Engine ✅",
+    ""
+  ];
+
+  const hoverDesc = [
+    "Language OCR Translator",
+    "",
+    "",
     "Berkeley AI Projects",
     "HackRPI 2024 Website",
     "Call A Ride Platform",
     "Youtube Comment System",
     "HTML Search Engine",
-    "..."
+    "Hello :)"
   ];
 
   const projectDesc = [
@@ -80,12 +93,13 @@ function App() {
     Project4,
     Project5,
     Project6,
-    Project9,
+    ProjectEmpty,
   ];
 
   const projectTemplates = projectNames.map((name, i) => ({
     id: i + 1,
     name,
+    hoverDesc: hoverDesc[i],
     desc: projectDesc[i],
     overlaydesc: projectOverlayDesc[i],
     imageSrc: CardImages[i],
@@ -236,12 +250,12 @@ function App() {
             marginTop: 50,
             marginBottom: 150,
           }}>
-            {projectTemplates.map(({ id, name, desc, overlaydesc, imageSrc }) => (
+            {projectTemplates.map(({ id, name, hoverDesc, desc, overlaydesc, imageSrc }) => (
               <TiltedCard
                 key={id}
                 imageSrc={imageSrc}
                 altText={name}
-                captionText={name}
+                captionText={hoverDesc}
                 descriptionText={desc}
                 descriptionOnImage={overlaydesc}
                 containerHeight="300px"
