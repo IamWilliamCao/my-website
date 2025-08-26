@@ -6,7 +6,8 @@ import InfoContent from './InfoContent';
 import TiltedCard from './Card';
 import Modal from './CardOut';
 
-import { FiHome, FiPackage, FiUser, FiSettings } from 'react-icons/fi';
+import { FiHome, FiPackage, FiUser, FiSettings, FiCheckCircle} from 'react-icons/fi';
+
 
 import Project1 from './images/Project1.png';
 import Project2 from './images/Project2.png';
@@ -37,21 +38,21 @@ function App() {
   ];
 
   const projectNames = [
-    "Language OCR Translator ⚙️",
-    "⚙️",
-    "⚙️",
-    "Berkeley AI Projects ✅",
-    "HackRPI 2024 Website ✅",
-    "Call A Ride Platform ✅",
-    "Youtube Comment System ✅",
-    "HTML Search Engine ✅",
-    ""
+    <>Chaverse - Beyond Language <FiSettings style={{ filter: "drop-shadow(2px 2px 2px rgb(0, 0, 0))"}} /></>,
+    <>Language OCR Translator <FiSettings style={{ filter: "drop-shadow(2px 2px 2px rgb(0, 0, 0))"}} /></>,
+    <>Rock Paper Scissor Dungeon <FiCheckCircle style={{ filter: "drop-shadow(2px 2px 2px rgb(0, 0, 0))"}} /></>,
+    <>Berkeley AI Projects <FiCheckCircle style={{ filter: "drop-shadow(2px 2px 2px rgb(0, 0, 0))"}} /></>,
+    <>HackRPI 2024 Website <FiCheckCircle style={{ filter: "drop-shadow(2px 2px 2px rgb(0, 0, 0))"}} /></>,
+    <>Call A Ride Platform <FiCheckCircle style={{ filter: "drop-shadow(2px 2px 2px rgb(0, 0, 0))"}} /></>,
+    <>Youtube Comment System <FiCheckCircle style={{ filter: "drop-shadow(2px 2px 2px rgb(0, 0, 0))"}} /></>,
+    <>HTML Search Engine <FiCheckCircle style={{ filter: "drop-shadow(2px 2px 2px rgb(0, 0, 0))"}} /></>,
+    "",
   ];
 
   const hoverDesc = [
+    "Chaverse - Beyond Language",
     "Language OCR Translator",
-    "",
-    "",
+    "Rock Paper Scissor Dungeon",
     "Berkeley AI Projects",
     "HackRPI 2024 Website",
     "Call A Ride Platform",
@@ -61,32 +62,116 @@ function App() {
   ];
 
   const projectDesc = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+    "A real-time, multilingual thread-based chat platform built with React and Firebase. Users can create or join rooms via unique codes, send messages with auto-translation, dictate text via speech recognition, and share images. Features live participant tracking, profile customization, animated UI, and automatic room lifecycle management.",
+    "Automates the translation of text in images by performing OCR, translating detected text, and replacing original text with translated text while preserving layout and style. Handles batch processing of images, dynamically adjusts fonts and colors for readability, and ensures efficient file I/O and error handling.",
+    "Ever wanted to let your hands do the talking? In this game, that’s not a metaphor, you’ll literally be speaking to hands, fighting with goblins, and running into all sorts of oddball creatures as you crawl through dungeons. Built entirely solo, this Rock-Paper-Scissors card-battle adventure mixes strategy, loot, and progression. With original composed music, every battle feels alive, where every throw of rock, paper, or scissors could change your fate.",
+    "AI Knowledge. ",
+    "Designed and implemented a dynamic website for HackRPI 2024 using JavaScript, CSS, and interactive graphical animations. Collaborated with a team of organizers to integrate APIs and manage databases, enabling real-time profile handling and event updates.",
+    "Developed a Uber-like simulation platform in C++ using linked lists and object-oriented design. Managed drivers and riders with classes, processed ride requests/cancellations, and calculated distances using the Haversine formula..",
+    "Designed and implemented a C++ tree-based system to parse JSON-like YouTube comment data, build hierarchical comment trees, and process user commands (like, delete, reply, display) with dynamic updates and structured output.",
+    "This C++ program recursively crawls local HTML files, searches for keywords, extracts metadata and snippets, calculates relevance scores using keyword density and backlinks, and outputs ranked search results.",
+    "Hello :)",
   ];
 
   const projectOverlayDesc = [
-    "Python - EasyOCR & Deep Translator", 
-    "",
-    "",
-    "Python - Searches, Inference, & RL", 
-    "JavaScript - Web Dev with Animations",
-    "C++ - Ride Platform with Linked Lists",
-    "C++ - Tree-Based Optimization",
-    "C++ - File Iterative Search",
+    "June 2025 - Present", 
+    "May 2025 - Present",
+    "June 2025 - August 2025",
+    "January 2025 - May 2025", 
+    "November 2024 - December 2024",
+    "January 2024 - March 2024",
+    "November 2023 - December 2023",
+    "November 2023 - December 2023",
     "",
   ];
 
+  const skillsUsed = [
+    // CHAVERSE BEYOND LANGUAGE
+    "Frontend: React (hooks | state | refs | effects | CSS | dynamic canvas animations), " +
+    "Realtime communication: Firebase Firestore (rooms | messages | participants), " +
+    "Authentication: Firebase Auth (signup | login | email verification | persistent sessions), " +
+    "Storage & file handling: Firebase Storage | FileReader (Base64 image uploads), " +
+    "Translation layer: REST API fetch (timeouts | error handling | multilingual output), " +
+    "Speech recognition: Web Speech API (dictation | continuous input | language switching), " +
+    "UI/UX: Room codes | modal previews | original vs translated toggle | scroll anchoring, " +
+    "Collaboration tools: User profiles (dictation language persistence | live participants display), " +
+    "Error handling & optimization (aborted fetch | duplicate room prevention | auto-cleanup of empty rooms)", 
+
+    // LANGUAGE OCR TRANSLATOR
+    "Python (PIL | ImageDraw | ImageFont | OS | EasyOCR), " +
+    "OCR processing (text detection | bounding box extraction | confidence filtering), " +
+    "Translation (GoogleTranslator API | batch processing | source-target handling), " +
+    "Image manipulation (cropping | color analysis | background adjustment | text overlay), " +
+    "Font & layout management (dynamic sizing | positioning | fill color selection), " +
+    "Automation & scripting (file I/O | folder traversal | batch saving), " +
+    "Error handling & optimization (skip empty translations | bounding box adjustments | loop efficiency)",
+
+
+    // ROCK PAPER SCISSOR DUNGEON
+    "React.js (functional components | hooks | props/state management), " +
+    "JavaScript (modules | higher-order functions | async logic), " +
+    "Game logic architecture (turn-based phases | RPS rules | card abilities | cooldowns | buffs & debuffs), " +
+    "Performance & debugging (memoization | batched updates), " +
+    "UI/UX systems (backpack | tooltips | overlays | dialog flow), " +
+    "Animation & effects (CSS transitions | hit & heal feedback | wave entries), " +
+    "Persistence (localStorage for progress | coins | settings), " +
+    "Testing & QA (edge cases | regression checks | deterministic seeds), " +
+    "Version control and Project management (roadmapping), " +
+    "Creative direction (UX flow | art style guidelines | narrative), " +
+    "Original audio production (composition | recording | mixing | mastering | SFX design)",
+
+    // AI
+    "Python | AI algorithms | Informed search | Probabilistic inference, " +
+    "Reinforcement learning | Simulation visualization | Algorithm optimization, " +
+    "Data structures | State-space search | Problem-solving | Critical thinking",
+    
+    // HACK-RPI 2024 WEBSITE
+    "JavaScript | CSS | HTML, " +
+    "DOM manipulation | API integration | Database management, " +
+    "Responsive design | JavaScript/CSS | Dynamic UI effects, " +
+    "Project management | Team coordination | Adaptability | Creativity",
+        
+    // DRIVER APP
+    "Object-Oriented Programming (Driver & Rider classes), " +
+    "Operator overloading for structured output, " +
+    "File I/O (ifstream | ofstream) for drivers/riders data, " +
+    "Linked lists & iterators for dynamic data management, " +
+    "Haversine formula for distance calculation, " +
+    "Command handling (request | cancel), " +
+    "State management for drivers & riders, " +
+    "String parsing & validation (phone numbers, vehicle preferences), " +
+    "Output formatting & structured printing",
+    
+    //YOUTUBE COMMENT SYSTEM
+    "File I/O (ifstream | ofstream), " +
+    "Custom JSON-like parsing (find | substr | erase), " +
+    "Nested vector & tree data structures, " +
+    "Tree construction (root | child | recursive replies), " +
+    "Command parsing & execution (like | delete | reply | display), " +
+    "State updates (likes | replies | hidden/deleted flags), " +
+    "Duplicate-check prevention, " +
+    "Dynamic memory management & cleanup, " +
+    "Output formatting & structured printing, " +
+    "Command-line argument handling",
+    
+    //HTML SEARCH ENGINE
+    "File I/O (ifstream | ofstream), " +
+    "String parsing (find | substr | erase), " +
+    "Regex link extraction (std::regex), " +
+    "Recursive search & crawling, " +
+    "STL containers (list | vector | map), " +
+    "Custom comparator, " +
+    "Keyword density scoring, " +
+    "Edge case handling, " +
+    "HTML parsing (title | h1 | meta | body), " +
+    "Command-line argument handling",
+
+    "N/A",
+  ];
+
   const CardImages = [
-    Project1,
     Project8,
+    Project1,
     Project9,
     Project2,
     Project3,
@@ -103,6 +188,7 @@ function App() {
     desc: projectDesc[i],
     overlaydesc: projectOverlayDesc[i],
     imageSrc: CardImages[i],
+    skills: skillsUsed[i],
   }));
 
   // Handle mouse movement to update mouse state for text effect
@@ -152,7 +238,7 @@ function App() {
       `}</style>
       <div style={{
         ...loadingStyle,
-        fontFamily: "'Compressa VF', sans-serif", // Apply your font here
+        fontFamily: "'Compressa VF', sans-serif", 
       }}>
         Loading{loadingDots}
       </div>
@@ -250,7 +336,7 @@ function App() {
             marginTop: 50,
             marginBottom: 150,
           }}>
-            {projectTemplates.map(({ id, name, hoverDesc, desc, overlaydesc, imageSrc }) => (
+            {projectTemplates.map(({ id, name, hoverDesc, desc, overlaydesc, imageSrc, skills}) => (
               <TiltedCard
                 key={id}
                 imageSrc={imageSrc}
@@ -274,10 +360,12 @@ function App() {
                     content: (
                       <>
                         <p>{desc || `This is a detailed description for ${name}.`}</p>
-                        <p><strong>Technologies:</strong></p>
+                        <p><strong>Skills Used:</strong></p>
                         <ul style={{ listStylePosition: "inside", paddingLeft: 0, textAlign: "left", display: "inline-block", margin: "0 auto" }}>
-                          {(overlaydesc ? overlaydesc.split(',') : ["N/A"]).map((tech, i) => (
-                            <li key={i}>{tech.trim()}</li>
+                          {(skills ? skills.split(',') : ["N/A"]).map((tech, i) => (
+                            <li key={i} style={{ marginBottom: "8px" }}>
+                              {tech.trim()}
+                            </li>
                           ))}
                         </ul>
                       </>

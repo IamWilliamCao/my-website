@@ -13,7 +13,8 @@ export default function Modal({ isOpen, onClose, title, content }) {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: 9999
+      zIndex: 9999,
+      overflow: 'hidden'
     }}>
       <div style={{
         backgroundColor: 'white',
@@ -21,6 +22,8 @@ export default function Modal({ isOpen, onClose, title, content }) {
         borderRadius: '10px',
         width: '80%',
         maxWidth: '600px',
+        maxHeight: '80vh',   // limit height
+        overflowY: 'auto',   // scroll inside if needed
         textAlign: 'center',
         color: 'black',
       }}>
